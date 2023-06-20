@@ -23,5 +23,25 @@ namespace GridlineInterviewAPI.Controllers
             var trucks = context.Trucks.ToList();
             return trucks;
         }
+
+        [HttpPost(Name = "AddTruck")]
+        public void Post(Truck truck)
+        {
+            using var context = new GridlineContext();
+            context.Trucks.Add(truck);
+            context.SaveChanges();
+        }
+
+        [HttpDelete(Name = "RemoveTruck")]
+        public void Delete(int id)
+        {
+            using var context = new GridlineContext();
+            var truck = context.Trucks.FirstOrDefault(x => x.Id == id);
+            if (truck != null)
+            {
+                context.Trucks.Remove(truck);
+                context.SaveChanges();
+            }
+        }
     }
 }

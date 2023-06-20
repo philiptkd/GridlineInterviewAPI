@@ -23,5 +23,25 @@ namespace GridlineInterviewAPI.Controllers
             var drivers = context.Drivers.ToList();
             return drivers;
         }
+
+        [HttpPost(Name = "AddDriver")]
+        public void Post(Driver driver)
+        {
+            using var context = new GridlineContext();
+            context.Drivers.Add(driver);
+            context.SaveChanges();
+        }
+
+        [HttpDelete(Name = "RemoveDriver")]
+        public void Delete(int id)
+        {
+            using var context = new GridlineContext();
+            var driver = context.Drivers.FirstOrDefault(x => x.Id == id);
+            if (driver != null)
+            {
+                context.Drivers.Remove(driver);
+                context.SaveChanges();
+            }
+        }
     }
 }
