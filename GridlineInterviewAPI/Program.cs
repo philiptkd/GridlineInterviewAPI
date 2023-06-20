@@ -1,3 +1,10 @@
+using GridlineInterviewAPI.DAL;
+
+using (var context = new GridlineContext())
+{
+    context.Database.EnsureCreated();
+}
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

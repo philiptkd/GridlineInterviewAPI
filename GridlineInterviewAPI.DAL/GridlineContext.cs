@@ -6,14 +6,14 @@ using System.Reflection.Metadata;
 
 namespace GridlineInterviewAPI.DAL
 {
-    public class Context : DbContext
+    public class GridlineContext : DbContext
     {
         public DbSet<Truck> Trucks { get; set; }
         public DbSet<Driver> Drivers { get; set; }
 
         public string DbPath { get; }
 
-        public Context()
+        public GridlineContext()
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);

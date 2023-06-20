@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using GridlineInterviewAPI.Core.Models;
+using GridlineInterviewAPI.DAL;
 
 namespace GridlineInterviewAPI.Controllers
 {
@@ -15,10 +16,12 @@ namespace GridlineInterviewAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetTruck")]
+        [HttpGet(Name = "GetTrucks")]
         public IEnumerable<Truck> Get()
         {
-            return new List<Truck>();
+            using var context = new GridlineContext();
+            var trucks = context.Trucks.ToList();
+            return trucks;
         }
     }
 }
