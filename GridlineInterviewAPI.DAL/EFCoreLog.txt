@@ -40,3 +40,57 @@ dbug: 6/21/2023 05:57:44.046 RelationalEventId.ConnectionClosing[20002] (Microso
       Closing connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
 dbug: 6/21/2023 05:57:44.053 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
       Closed connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db' (6ms).
+dbug: 6/21/2023 07:23:31.051 CoreEventId.ShadowPropertyCreated[10600] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      The property 'DriverTruck (Dictionary<string, object>).DriversId' was created in shadow state because there are no eligible CLR members with a matching name.
+dbug: 6/21/2023 07:23:31.052 CoreEventId.ShadowPropertyCreated[10600] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      The property 'DriverTruck (Dictionary<string, object>).TrucksId' was created in shadow state because there are no eligible CLR members with a matching name.
+dbug: 6/21/2023 07:23:31.329 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.7 initialized 'GridlineContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:7.0.7' with options: NoTracking 
+dbug: 6/21/2023 07:23:31.419 CoreEventId.QueryCompilationStarting[10111] (Microsoft.EntityFrameworkCore.Query) 
+      Compiling query expression: 
+      'DbSet<Driver>()
+          .Include(x => x.Trucks)'
+dbug: 6/21/2023 07:23:31.597 CoreEventId.NavigationBaseIncluded[10112] (Microsoft.EntityFrameworkCore.Query) 
+      Including navigation: 'Driver.Trucks'.
+dbug: 6/21/2023 07:23:32.167 CoreEventId.QueryExecutionPlanned[10107] (Microsoft.EntityFrameworkCore.Query) 
+      Generated query execution expression: 
+      'queryContext => new SingleQueryingEnumerable<Driver>(
+          (RelationalQueryContext)queryContext, 
+          RelationalCommandCache.QueryExpression(
+              Client Projections:
+                  0 -> Dictionary<IProperty, int> { [Property: Driver.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 0], [Property: Driver.FirstName (string) Required, 1], [Property: Driver.LastName (string) Required, 2] }
+                  1 -> 0
+                  2 -> Dictionary<IProperty, int> { [Property: Truck.Id (int) Required PK AfterSave:Throw ValueGenerated.OnAdd, 3], [Property: Truck.Make (string) Required, 4], [Property: Truck.Model (string) Required, 5], [Property: Truck.Year (int) Required, 6] }
+                  3 -> 7
+                  4 -> 8
+                  5 -> 3
+              SELECT d.Id, d.FirstName, d.LastName, t0.Id, t0.Make, t0.Model, t0.Year, t0.DriversId, t0.TrucksId
+              FROM Drivers AS d
+              LEFT JOIN 
+              (
+                  SELECT t.Id, t.Make, t.Model, t.Year, d0.DriversId, d0.TrucksId
+                  FROM DriverTruck AS d0
+                  INNER JOIN Trucks AS t ON d0.TrucksId == t.Id
+              ) AS t0 ON d.Id == t0.DriversId
+              ORDER BY d.Id ASC, t0.DriversId ASC, t0.TrucksId ASC), 
+          null, 
+          Func<QueryContext, DbDataReader, ResultContext, SingleQueryResultCoordinator, Driver>, 
+          GridlineInterviewAPI.DAL.GridlineContext, 
+          False, 
+          False, 
+          True
+      )'
+dbug: 6/21/2023 07:23:32.232 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.
+dbug: 6/21/2023 07:23:32.261 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (28ms).
+dbug: 6/21/2023 07:23:32.262 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteReader'.
+dbug: 6/21/2023 07:23:32.269 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteReader' (39ms).
+dbug: 6/21/2023 07:23:32.272 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteReader' (44ms).
+dbug: 6/21/2023 07:23:32.289 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 07:23:32.319 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+     

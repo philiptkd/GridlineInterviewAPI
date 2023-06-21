@@ -29,7 +29,7 @@ namespace GridlineInterviewAPI.Controllers
           {
               return NotFound();
           }
-            return await _context.Trucks.ToListAsync();
+            return await _context.Trucks.Include(x => x.Drivers).ToListAsync();
         }
 
         // GET: api/Trucks/5
@@ -40,7 +40,9 @@ namespace GridlineInterviewAPI.Controllers
           {
               return NotFound();
           }
-            var truck = await _context.Trucks.FindAsync(id);
+            var truck = await _context.Trucks
+                .Include(x => x.Drivers)
+                .FirstOrDefaultAsync(x => x.Id == id);
 
             if (truck == null)
             {
