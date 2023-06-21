@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using GridlineInterviewAPI.Core.Models;
 using GridlineInterviewAPI.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace GridlineInterviewAPI.Controllers
 {
@@ -36,10 +37,30 @@ namespace GridlineInterviewAPI.Controllers
         public void Delete(int id)
         {
             using var context = new GridlineContext();
-            var driver = context.Drivers.FirstOrDefault(x => x.Id == id);
+            var driver = context.Drivers.Find(id);
             if (driver != null)
             {
                 context.Drivers.Remove(driver);
+                context.SaveChanges();
+            }
+        }
+
+        [HttpPut(Name = "UpdateDriver")]
+        public void Put(Driver driver)
+        {
+            using var context = new GridlineContext();
+            context.Drivers.Update(driver);
+            context.SaveChanges();
+        }
+
+        [HttpPatch(Name = "GiveTruck")]
+        public void Patch(int driverId, Truck truck)
+        {
+            using var context = new GridlineContext();
+            var driver = context.Drivers.Find(driverId);
+            if (driver != null)
+            {
+                driver.Trucks.Add(truck);
                 context.SaveChanges();
             }
         }

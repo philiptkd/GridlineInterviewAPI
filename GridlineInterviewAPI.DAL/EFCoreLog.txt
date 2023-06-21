@@ -1,0 +1,42 @@
+dbug: 6/21/2023 05:57:43.604 CoreEventId.ShadowPropertyCreated[10600] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      The property 'DriverTruck (Dictionary<string, object>).DriversId' was created in shadow state because there are no eligible CLR members with a matching name.
+dbug: 6/21/2023 05:57:43.604 CoreEventId.ShadowPropertyCreated[10600] (Microsoft.EntityFrameworkCore.Model.Validation) 
+      The property 'DriverTruck (Dictionary<string, object>).TrucksId' was created in shadow state because there are no eligible CLR members with a matching name.
+dbug: 6/21/2023 05:57:43.852 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 7.0.7 initialized 'GridlineContext' using provider 'Microsoft.EntityFrameworkCore.Sqlite:7.0.7' with options: None
+dbug: 6/21/2023 05:57:43.899 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.
+dbug: 6/21/2023 05:57:43.911 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (12ms).
+dbug: 6/21/2023 05:57:43.916 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 05:57:43.930 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 05:57:43.937 RelationalEventId.ConnectionDisposing[20007] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposing connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 05:57:43.941 RelationalEventId.ConnectionDisposed[20008] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Disposed connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db' (2ms).
+dbug: 6/21/2023 05:57:43.948 RelationalEventId.ConnectionCreating[20005] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Creating DbConnection.
+dbug: 6/21/2023 05:57:43.948 RelationalEventId.ConnectionCreated[20006] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Created DbConnection. (0ms).
+dbug: 6/21/2023 05:57:43.950 RelationalEventId.CommandCreating[20103] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Creating DbCommand for 'ExecuteScalar'.
+dbug: 6/21/2023 05:57:43.957 RelationalEventId.CommandCreated[20104] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Created DbCommand for 'ExecuteScalar' (6ms).
+dbug: 6/21/2023 05:57:43.961 RelationalEventId.CommandInitialized[20106] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Initialized DbCommand for 'ExecuteScalar' (11ms).
+dbug: 6/21/2023 05:57:43.961 RelationalEventId.ConnectionOpening[20000] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opening connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 05:57:43.966 RelationalEventId.ConnectionOpened[20001] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Opened connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 05:57:43.997 RelationalEventId.CommandExecuting[20100] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executing DbCommand [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+info: 6/21/2023 05:57:44.039 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (65ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+dbug: 6/21/2023 05:57:44.046 RelationalEventId.ConnectionClosing[20002] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closing connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db'.
+dbug: 6/21/2023 05:57:44.053 RelationalEventId.ConnectionClosed[20003] (Microsoft.EntityFrameworkCore.Database.Connection) 
+      Closed connection to database 'main' on server 'C:\Users\philiptkd\AppData\Local\local.db' (6ms).
