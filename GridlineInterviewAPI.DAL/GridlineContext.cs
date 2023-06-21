@@ -15,20 +15,24 @@ namespace GridlineInterviewAPI.DAL
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var drivers = new Driver[]
-            {
-                new Driver { Id = 1, FirstName = "Alice", LastName = "Smith" },
-                new Driver { Id = 2, FirstName = "Bob", LastName = "Jones" }
-            };
+            modelBuilder.Entity<Driver>().Property<DateTime>("Audit_Created");
+            modelBuilder.Entity<Driver>().Property<DateTime>("Audit_Modified");
 
-            var trucks = new Truck[]
-            {
-                new Truck { Id = 1, Make = "Toyota", Model = "BigTruck" },
-                new Truck { Id = 2, Make = "Ford", Model = "HugeTruck" }
-            };
+            modelBuilder.Entity<Truck>().Property<DateTime>("Audit_Created");
+            modelBuilder.Entity<Truck>().Property<DateTime>("Audit_Modified");
+        }
 
-            modelBuilder.Entity<Driver>().HasData(drivers);
-            modelBuilder.Entity<Truck>().HasData(trucks);
+        public override int SaveChanges()
+        {
+            var timestamp = DateTime.Now;
+            foreach (var entry in ChangeTracker.Entries()
+                .Where(e => e.State == EntityState.Added || e.State == EntityState.Modified))
+            {
+                entry.Property("Audit_Modified").CurrentValue = timestamp;
+                if (entry.State == EntityState.Added)
+                    entry.Property("Audit_Created").CurrentValue = timestamp;
+            }
+            return base.SaveChanges();
         }
     }
 }
