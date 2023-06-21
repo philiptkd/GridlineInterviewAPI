@@ -12,6 +12,6 @@ namespace GridlineInterviewAPI.Core.Models
         public string Make { get; set; }
         public string Model { get; set; }
         public int Year { get; set; }
-        public List<Driver> Drivers { get; } = new();
+        public List<Driver> Drivers { get; } = new(); // part of many-to-many relationship
     }
 }

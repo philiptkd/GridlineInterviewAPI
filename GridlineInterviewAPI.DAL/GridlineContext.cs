@@ -13,6 +13,8 @@ namespace GridlineInterviewAPI.DAL
 
         public GridlineContext(DbContextOptions<GridlineContext> options) : base(options) { }
 
+        // adds Created and Modified audit fields to both entities
+        //   despite them not existing on the classes
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Driver>().Property<DateTime>("Audit_Created");
@@ -22,6 +24,7 @@ namespace GridlineInterviewAPI.DAL
             modelBuilder.Entity<Truck>().Property<DateTime>("Audit_Modified");
         }
 
+        // automatically populates "shadow" properties Audit_Modified and Audit_Created
         public override int SaveChanges()
         {
             var timestamp = DateTime.Now;

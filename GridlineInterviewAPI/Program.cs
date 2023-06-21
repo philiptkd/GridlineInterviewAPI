@@ -3,10 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// puts ef core logs into file in DAL folder
 var writer = new StreamWriter("../GridlineInterviewAPI.DAL/EFCoreLog.txt", append: true);
 
 // Add services to the container.
 
+// prevents the recursive serialization bug
 builder.Services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
@@ -21,6 +24,8 @@ builder.Services.AddDbContext<GridlineContext>(options =>
 
     options.UseSqlite($"Data Source={DbPath}");
     options.LogTo(writer.WriteLine);
+
+    // performance boost by removing unnecessary feature in API
     options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
