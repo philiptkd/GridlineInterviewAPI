@@ -11,22 +11,7 @@ namespace GridlineInterviewAPI.DAL
         public DbSet<Truck> Trucks { get; set; }
         public DbSet<Driver> Drivers { get; set; }
 
-        public string DbPath { get; }
-
-        StreamWriter _writer = new StreamWriter("../GridlineInterviewAPI.DAL/EFCoreLog.txt", append: true);
-
-        public GridlineContext()
-        {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "local.db");
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder options)
-        {
-            options.UseSqlite($"Data Source={DbPath}");
-            options.LogTo(_writer.WriteLine);
-        }
+        public GridlineContext(DbContextOptions<GridlineContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
